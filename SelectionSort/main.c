@@ -14,7 +14,7 @@ void SelectionSort(int * arr, int size){
 
         menor = a;//Inicia marcando o primeiro elemento como sendo o menor
 
-        for(b = a+1; b < size -1;  b++){
+        for(b = a+1; b < size;  b++){
 
                 if(*(arr+b) < *(arr+menor))
                     menor = b;
@@ -38,7 +38,7 @@ void main(){
     int i;
 
     printf("\nArray Inicial: {");
-    for(i = 0; i < ARRAY_SIZE - 1; i++)
+    for(i = 0; i < ARRAY_SIZE; i++)
             printf("%d ", arr[i]);
     
     printf("}\n");
@@ -47,7 +47,7 @@ void main(){
     printf("\nSelection Sort Completo\n\n");
     printf("Array Ordenado: {");
 
-    for(i = 0; i < ARRAY_SIZE - 1; i++)
+    for(i = 0; i < ARRAY_SIZE; i++)
             printf("%d ", arr[i]);
 
     printf("}\n");
