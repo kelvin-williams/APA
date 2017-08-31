@@ -12,19 +12,20 @@ void MergeSort(int * arr, int st, int end){
    // printf("\n %d", end -st + 1);
 
     if(st < end){
-
+        //Escolhe o elemento do meio do array para fazer a divisão
         int aux[end - st + 1];
         int m = (st + end)/2;
         int a = st;
         int b = m+1;
         int i = 0;
+        //Chama o merge sort para o lado esquerdo e depois para o direito
         MergeSort(&arr[0], st, m);
         MergeSort(&arr[0], m+1, end);
     
-    //Merge
-        //for(i = 0; i <= (end - st); i++){
+    ///////////////Merge///////////////////////////
+        //Percorre os dois pedaços separados do array com "a" e "b"
           while(a <= m && b < end+1){
-
+            //Pega o menor valor dos dois e coloca no array auxiliar
             if(*(arr+a) <= *(arr+b)){
                 *(aux+i) = *(arr+a);
                 a++;
@@ -35,7 +36,6 @@ void MergeSort(int * arr, int st, int end){
                 i++;
             }
         }
-
         while(a <= m){
             *(aux+i) = *(arr+a);
             a++;

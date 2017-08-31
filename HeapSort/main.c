@@ -19,7 +19,7 @@ void heapify(int * arr, int n, int i){
     if (r < n && *(arr+r) > *(arr+maior))
         maior = r;
  
-    // Se o "maior" não for a raiz da sub-árvore troca
+    // Se o "maior" não for a raiz da sub-árvore faz a troca
     if (maior != i)
     {
         int aux = *(arr+maior);
