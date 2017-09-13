@@ -1,2 +1,2 @@
-insertionsort: main.c
+inssort: main.c
 	gcc main.c -o inssort

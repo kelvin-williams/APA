@@ -1,2 +1,2 @@
-mergesort: main.c
+mersort: main.c
 	gcc main.c -o mersort
