@@ -1,10 +1,42 @@
 #include <stdio.h>
+#include <time.h>
 
 // ALuno: Kelvin Williams Neves Bernardo - 11500272
 //
 // Selection Sort
 
-#define ARRAY_SIZE 10
+int countfile(char * str, int * max){
+    FILE *f; 
+    f = fopen(str, "r");
+    int size = 0;
+    int aux;
+
+    while(!feof (f))
+    {                
+        fscanf(f, "%d", &aux);
+        size++;
+        if(aux > *max)
+            *max = aux;
+    }
+    fclose(f);
+
+    return size;
+}
+
+void GetNumbersfromFile(char * str, int * arr){
+
+    FILE *f; 
+    f = fopen(str, "r");
+    int i = 0;
+
+    while(!feof (f))
+    {                
+        fscanf(f, "%d", arr+i);
+        i++;
+    }
+    fclose(f);
+}
+
 
 void SelectionSort(int * arr, int size){
 
@@ -34,20 +66,38 @@ void SelectionSort(int * arr, int size){
 
 void main(){
 
-    int arr[ARRAY_SIZE] = {6,2,9,5,8,1,4,0,7,3};
+    clock_t start, end;
+    double cpu_time_used;
+    int max = 0;
+
+    int size = countfile("instancias-num/num.100000.1.in", &max);
+
+    printf("\nTamanho do Array: %d, Valor Maximo: %d \n\n", size, max);
+
+    int arr[size];
     int i;
 
+    GetNumbersfromFile("instancias-num/num.100000.1.in", &arr[0]);
+
     printf("\nArray Inicial: {");
-    for(i = 0; i < ARRAY_SIZE; i++)
+    for(i = 0; i < size; i++)
             printf("%d ", arr[i]);
     
     printf("}\n");
 
-    SelectionSort(&arr[0], ARRAY_SIZE);
+	start = clock();
+
+    SelectionSort(&arr[0], size);
+
+	end = clock();
+    cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+
     printf("\nSelection Sort Completo\n\n");
+	printf("Tempo de Execução %f segundo(s).\n\n", cpu_time_used);
+
     printf("Array Ordenado: {");
 
-    for(i = 0; i < ARRAY_SIZE; i++)
+    for(i = 0; i < size; i++)
             printf("%d ", arr[i]);
 
     printf("}\n");
